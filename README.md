@@ -2,8 +2,8 @@
 
 ## Project Name
 
-Code 201 - Lab 05
-Fun with Functions
+Code 201 - Lab 05 <br />
+Fun with Functions <br />
 Write some functions on Git branches
 
 ## About Project
