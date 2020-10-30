@@ -52,8 +52,8 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-  var add = a + b + c;
-  var prodOfThreeNum = a * b * c;
+  var add = sum(a, sum(b, c)[0])[0];
+  var prodOfThreeNum = multiply(a, multiply(b, c)[0])[0];
   var stringAdd = a + ' and ' + b + ' and ' + c + ' sum to ' + add + '.';
   var stringProd =  'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + prodOfThreeNum + '.';
 
@@ -79,11 +79,11 @@ Test this function by hand in the console to get it working, and when you think 
 var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
-  var sum=0;
+  var sumTotal=0;
   var string = '';
 
   for(var i=0; i<sumArr.length; i++){
-    sum = sum + sumArr[i];
+    sumTotal = sum(sumTotal, sumArr[i])[0];
     
     if(i !== (sumArr.length - 1)){
       string = string + sumArr[i] + ',';
@@ -91,9 +91,9 @@ function sumArray(sumArr) { //eslint-disable-line
       string = string + sumArr[i];
     }
   }
-  string = string + ' was passed in as an array of numbers, and ' + sum + ' is their sum.';
+  string = string + ' was passed in as an array of numbers, and ' + sumTotal + ' is their sum.';
 
-  return [sum, string];  
+  return [sumTotal, string];  
 }
 
 // Here is the test for sumArray(); uncomment it to run it
@@ -114,11 +114,25 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
+  var prodOfVarArr = 1;
+  var string = '';
 
+  for(var i=0; i<multArr.length; i++){
+    prodOfVarArr = multiply(prodOfVarArr, multArr[i])[0];
+
+    if(i !== (multArr.length - 1)){
+      string = string + multArr[i] + ',';
+    }else{
+      string = string + multArr[i];
+    }
+  }
+  string = 'The numbers ' + string + ' have a product of ' + prodOfVarArr + '.';
+
+  return [prodOfVarArr, string];  
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 
